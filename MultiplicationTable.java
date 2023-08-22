@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class MultiplicationTable {
@@ -5,31 +6,28 @@ public class MultiplicationTable {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите количество примеров ");
         int n = scanner.nextInt();
-        int a = 1;
-        int b = 10;
-        double trueAnswer = 0;
+        int trueAnswer = 0;
 
-        for(int w = 1; w<=n; w++) {
-            int number1 =0;
-            int number2 =0;
-            for (int x = 0; x <= n; x++) {
-                number1 = a + (int) (Math.random() * b); //убрать 2 цикла
-            }
-
-            for (int y = 0; y <= n; y++) {
-                number2 = a + (int) (Math.random() * b);
-            }
-
+        for(int i = 1; i<=n; i++) {
+            int number1 = generateNumber();
+            int number2 = generateNumber();
             System.out.println(number1 + " * " + number2 + " = ");
             System.out.println("Введите ответ ");
             int answerStudent = scanner.nextInt();
-            if(answerStudent == number1*number2) {
+            if (answerStudent == number1 * number2) {
                 trueAnswer++;
             }
         }
-        double result = (trueAnswer/n)*100;
+        printResult(trueAnswer, n);
+    }
+    static int generateNumber() {
+        Random random = new Random();
+        return random.nextInt(10);
+    }
+    public static void printResult(int trueAnswer, int n){ //передавать процент, должна вернуть оценку, а не выводить на экран
+        double result = ((double) trueAnswer/n)*100;
         if(result>90) {
-            System.out.println("Ваша оценка 5"); // вынести в функцию
+            System.out.println("Ваша оценка 5");
         }
         else if(result<90 && result>75) {
             System.out.println("Ваша оценка 4");

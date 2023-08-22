@@ -16,7 +16,7 @@ public class Rubles {
         else if(x == 2 || x==3 || x ==4){
             System.out.println(summa + " рубля");
         }
-        else if(x<=9 && x>=5 || x ==0) {
+        else {
             System.out.println(summa + " рублей");
         }
 
